@@ -1,75 +1,58 @@
-# React + TypeScript + Vite
+# Salón Colaborativo — Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front end de una aplicación web de un salón colaborativo, construida con React, TypeScript y Vite. Incluye pantallas públicas de bienvenida, registro y ayuda; vistas de dashboard y perfil; una vista de sala; y un diagnóstico de conexión con la API.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20.19+ o 22.12+
+- npm
 
-## React Compiler
+## Ejecutar en desarrollo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Desde la carpeta raíz:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev (Para probar de manera local la visualizacion de la página)
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+(Crea un archivo `.env` local a partir de la plantilla)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```powershell
+Copy-Item .env.example .env
 ```
+
+En macOS/Linux:
+
+```bash
+cp .env.example .env
+```
+
+Completa en `.env` las variables que necesite tu entorno. Luego inicia Vite:
+
+```bash
+npm run dev
+```
+
+Abre la URL que muestra la terminal (normalmente `http://localhost:5173`). El servidor de desarrollo recarga la aplicación cuando guardas cambios.
+
+## Comandos
+
+```bash
+npm run dev      # Servidor local de desarrollo
+npm run build    # Verificación de TypeScript y build de producción
+npm run preview  # Previsualiza localmente el build de producción
+npm run lint     # Ejecuta ESLint
+```
+
+El build de producción se genera en `dist/`.
+
+## Rutas principales
+
+- `/` — bienvenida
+- `/iniciar-sesion` — inicio de sesión
+- `/registro` y `/registro/manual` — registro
+- `/ayuda` y `/accesibilidad` — información y accesibilidad
+- `/diagnostico-sistema` — estado de conexión con la API
+- `/dashboard` y `/perfil` — vistas privadas
+- `/salas/:id` — sala
